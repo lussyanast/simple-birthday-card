@@ -1,0 +1,153 @@
+@import url('https://fonts.googleapis.com/css2?family=Mochiy+Pop+P+One&display=swap');
+
+body {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #FFA0B6;
+  font-family: 'Mochiy Pop P One', sans-serif;
+}
+
+input#open {
+  display: none;
+}
+
+.birthday-card {
+  position: relative;
+  width: 300px;
+  height:300px;
+  transform-style: preserve-3d;
+  transform: perspective(2500px);
+  transition: .3s;
+  top:50px;
+  cursor: pointer;
+  animation: up 3s linear infinite;
+}
+
+@keyframes up {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-30px);
+  }
+}
+
+.card-front {
+  position: relative;
+  background-color: #fff0f3;
+  width: 300px;
+  height:300px;
+  transform-origin: left;
+  box-shadow: inset 100px 20px 100px rgba(0,0,0,.15), 30px 0 50px rgba(0,0,0,0.3);
+  transition: .3s;
+}
+
+.card-front:before {
+  content:"";
+  position: absolute;
+  width: 280px;
+  height: 280px;
+  top: 10px;
+  left: 10px;
+}
+
+.card-inside {
+  position: absolute;
+  background-color: #fff0f3;
+  width: 300px;
+  height:300px;
+  z-index:-1;
+  left:0;
+  top:0;
+  box-shadow: inset 100px 20px 100px rgba(0,0,0,0.22), 100px 20px 100px rgba(0,0,0,0.1);
+}
+
+.open {
+  position: absolute;
+  width: 300px;
+  height:300px;
+  left:0;
+  top:0;
+  background-color: transparent;
+  z-index:6;
+  cursor: pointer;
+}
+
+#open:checked ~ .card-front {
+  transform: rotateY(-155deg);
+  box-shadow: inset 100px 20px 100px rgba(0,0,0,.13), 30px 0 50px rgba(0,0,0,0.1);
+}
+
+#open:checked ~ .card-front:before {
+  z-index:5;
+  background-color: #fff0f3;
+  width:300px;
+  height:300px;
+  top:0;
+  left:0;
+  box-shadow: inset 100px 20px 100px rgba(0,0,0,.1), 30px 0 50px rgba(0,0,0,0.1);
+}
+
+.note {
+  position: relative;
+  width: 200px;
+  height: 150px;
+  background-color: #FFFFFF;
+  top:75px;
+  left:50px;
+  color: #333;
+  font-size:30px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  filter: drop-shadow(0 0 20px rgba(0,0,0,0.3));
+}
+
+.text-one {
+  position: absolute;
+  font-size: 30px;
+  top:50px;
+  width:300px;
+  text-align: center;
+  color: #d04e4e;
+}
+
+.text-one:before, .text-one:after {
+  position: absolute;
+  left:5px;
+  text-align: center;
+  width:300px;
+  color: #333;
+}
+
+.text-one:before {
+  content:"Birthday!";
+  top:50px;
+  color: #d04e4e;
+}
+
+.text-one:after {
+  content:"I bought you the best birthday present ever: me!";
+  top:110px;
+  font-size: 15px;
+}
+
+@keyframes close {
+    0%, 100% {
+        transform: scale(1, .05);
+    }
+    5%, 95% {
+        transform: scale(1, 1);
+    }
+}
+
+@keyframes beat {
+  0%, 40%, 100% {
+    transform: scale(1) rotate(-45deg);
+  }
+  25%, 60% {
+    transform: scale(1.1) rotate(-45deg);
+  }
+}
